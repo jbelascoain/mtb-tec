@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MTB Tec - Elektrotechnik</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0A0F1D;
+      --card-bg: #131B2E;
+      --primary-blue: #0088FF;
+      --accent-orange: #FF8C00;
+      --text-white: #FFFFFF;
+      --text-muted: #94A3B8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      line-height: 1.6;
+      padding: 10px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 40px 15px;
+      text-align: center;
+      background: radial-gradient(circle at top, rgba(0, 136, 255, 0.15), transparent 70%);
+      border-radius: 16px;
+      margin-bottom: 25px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(255, 140, 0, 0.15);
+      border: 1px solid var(--accent-orange);
+      color: var(--accent-orange);
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: #FFFFFF;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 25px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      width: 100%;
+      max-width: 300px;
+      padding: 14px 20px;
+      background: linear-gradient(135deg, var(--accent-orange), #E67E00);
+      color: #fff;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      border-radius: 10px;
+      text-align: center;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    .cta-button:hover {
+      opacity: 0.9;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin: 30px 0 20px 0;
+      text-align: center;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+
+    @media (min-width: 600px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .partner-note {
+      background: rgba(0, 136, 255, 0.1);
+      border-left: 4px solid var(--primary-blue);
+      padding: 15px;
+      border-radius: 6px;
+      margin-top: 20px;
+      font-size: 0.85rem;
+      color: #CBD5E1;
+    }
+
+    .contact-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(0, 136, 255, 0.3);
+      text-align: center;
+      border-radius: 16px;
+      padding: 25px 15px;
+      margin-top: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 5px;
+    }
+
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: var(--bg-dark);
+      color: #fff;
+      font-size: 0.95rem;
+    }
+
+    .form-group input:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary-blue);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 10px;
+      font-size: 0.8rem;
+      color: #64748B;
+      margin-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: underline;
+      margin: 0 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="hero">
+      <div class="badge">Staatlich geprüfter Elektrotechniker</div>
+      <h1>MTB TEC</h1>
+      <p>Zukunftssichere Elektrotechnik, Ladeinfrastruktur & Gebäudeinstallation in Geldern & Niederrhein.</p>
+      <a href="#kontakt" class="cta-button">⚡ Jetzt Angebot Anfragen</a>
+    </div>
+
+    <h2 class="section-title">Unsere Leistungen</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-icon">🔌</div>
+        <h3>Wallbox & Ladeinfrastruktur</h3>
+        <p>Montage, Kabeltrassenverlegung & Unterverteilung für private und gewerbliche Ladeplätze.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏠</div>
+        <h3>Elektroinstallation & Sanierung</h3>
+        <p>Modernisierung veralteter Anlagen, Erneuerung von Zählerschränken & Verteilerbau.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📡</div>
+        <h3>Netzwerk & Smart Home</h3>
+        <p>Strukturierte Netzverkabelung für Home-Office & Betriebe sowie intelligente Gebäudesteuerung.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🛠️</div>
+        <h3>Messung & Ausführung</h3>
+        <p>Vor-Ort-Begehung, VDE-konforme Montage, Leitungsverlegung und Fehlerdiagnose.</p>
+      </div>
+    </div>
+
+    <div class="partner-note">
+      💡 <strong>Hinweis für Großprojekte:</strong> Die physische Montage & Installation erfolgt durch MTB Tec. Formelle Netzanmeldungen (EVU) und Abnahmen werden bei Bedarf nahtlos über zertifizierte Partnerbetriebe abgewickelt.
+    </div>
+
+    <div class="contact-card" id="kontakt">
+      <h2>Kontakt aufnehmen</h2>
+      <p style="color: var(--text-muted); margin-top: 5px; margin-bottom: 20px;">Planen Sie ein Projekt in Geldern, Duisburg oder Umgebung?</p>
+      
+      <!-- Formular über FormSubmit -->
+      <form action="https://formsubmit.co/info@mtb-tec.de" method="POST" style="max-width: 500px; margin: 0 auto;">
+        <div class="form-group">
+          <label for="name">Ihr Name</label>
+          <input type="text" id="name" name="name" placeholder="Max Mustermann" required>
+        </div>
+        <div class="form-group">
+          <label for="email">E-Mail Adresse</label>
+          <input type="email" id="email" name="email" placeholder="name@beispiel.de" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Projektbeschreibung / Nachricht</label>
+          <textarea id="message" name="message" rows="4" placeholder="Beschreiben Sie kurz Ihr Vorhaben..." required></textarea>
+        </div>
+        <button type="submit" class="cta-button">Nachricht Senden</button>
+      </form>
+
+      <div style="margin-top: 25px; font-size: 0.9rem; color: var(--text-muted);">
+        <p><strong>Inhaber:</strong> Tiago Belascoain</p>
+        <p><strong>Einsatzgebiet:</strong> Geldern, Duisburg & Niederrhein</p>
+        <p><strong>Handwerkskammer:</strong> HWK Düsseldorf</p>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 MTB Tec. Kleinunternehmer gemäß § 19 UStG.</p>
+      <p style="margin-top: 10px;">
+        <a href="impressum.html">Impressum</a> | 
+        <a href="datenschutz.html">Datenschutzerklärung</a>
+      </p>
+    </footer>
+  </div>
+
+</body>
+</html>
