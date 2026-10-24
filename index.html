@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>MTB-Tec – Design-Vorschläge</title>
+  <style>
+    :root { --oscuro:#16324f; --text:#3f4d5c; --borde:#e2eae7; --fondo:#f7faf9; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family:"Segoe UI",Arial,sans-serif; background:var(--fondo);
+      color:var(--text); min-height:100vh; display:grid; place-items:center; padding:2rem;
+    }
+    .wrap { max-width:900px; width:100%; text-align:center; }
+    h1 { color:var(--oscuro); font-size:clamp(1.5rem,4vw,2.2rem); margin-bottom:.5rem; }
+    p.sub { color:#6b7c8c; margin-bottom:2.5rem; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.5rem; }
+    .card {
+      display:block; text-decoration:none; background:#fff; border:1px solid var(--borde);
+      border-radius:16px; padding:1.8rem; text-align:left;
+      transition:transform .2s, box-shadow .2s;
+    }
+    .card:hover { transform:translateY(-5px); box-shadow:0 14px 30px rgba(22,50,79,.12); }
+    .card h2 { color:var(--oscuro); font-size:1.15rem; margin-bottom:.4rem; }
+    .card p { font-size:.92rem; margin-bottom:1rem; }
+    .card .go { font-weight:700; font-size:.9rem; }
+    .swatch { height:8px; border-radius:99px; margin-bottom:1.2rem; }
+    .s1 { background:linear-gradient(90deg,#1b3a5c 60%,#ffd400 60%); }
+    .s2 { background:linear-gradient(90deg,#0bbfa4 60%,#ffc93c 60%); }
+    .s3 { background:#d7dee6; }
+    .tag { display:inline-block; font-size:.72rem; font-weight:700; letter-spacing:.06em;
+           text-transform:uppercase; padding:.2rem .6rem; border-radius:99px;
+           background:rgba(22,50,79,.08); color:var(--oscuro); margin-bottom:.6rem; }
+    footer { margin-top:3rem; font-size:.8rem; color:#8a99a8; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>⚡ MTB-Tec – Design-Vorschläge</h1>
+    <p class="sub">Bitte wählen Sie eine Variante aus. Alle Varianten sind eigenständige Seiten.</p>
+
+    <div class="grid">
+      <!-- VARIANTE 1 -->
+      <a class="card" href="./variante-1/">
+        <div class="swatch s1"></div>
+        <span class="tag">Variante A</span>
+        <h2>Professionell &amp; klar</h2>
+        <p>Marineblau + Gelb, sachlich und seriös. Förmliche Anrede („Sie“).</p>
+        <span class="go">Seite ansehen →</span>
+      </a>
+
+      <!-- VARIANTE 2 -->
+      <a class="card" href="./variante-2/">
+        <div class="swatch s2"></div>
+        <span class="tag">Variante B</span>
+        <h2>Modern &amp; freundlich</h2>
+        <p>Türkis + Gelb, runde Formen, Emojis. Persönliche Anrede („du“).</p>
+        <span class="go">Seite ansehen →</span>
+      </a>
+
+# TEMPORALMENTE FUERA DEL PUSH (ver .gitignore): descomentar al incluirla
+      <!--
+      <a class="card" href="./variante-3/">
+        <div class="swatch s3"></div>
+        <span class="tag">Variante C</span>
+        <h2>Name der Variante</h2>
+        <p>Kurze Beschreibung.</p>
+        <span class="go">Seite ansehen →</span>
+      </a>
+      -->
+      
+    </div>
+
+    <footer>© 2026 MTB-Tec · Design-Vorschläge, keine Produktivseite</footer>
+  </div>
+</body>
+</html>
