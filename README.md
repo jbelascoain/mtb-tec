@@ -15,8 +15,8 @@ mtb-tec/
 │   ├── index.html
 │   ├── styles.css
 │   └── script.js
-├── variante-3/               → EXCLUIDA del push temporalmente (ver .gitignore): completo
-│                              (Impressum, Datenschutz, 404, robots, sitemap) con .git anidado
+├── variante-3/               → Variante C: completa y lista para producción (dark theme)
+│                              (Impressum, Datenschutz, 404, robots.txt, sitemap.xml, assets/)
 └── README.md
 ```
 
@@ -32,12 +32,8 @@ python3 -m http.server 8000
 # → http://localhost:8000          (página selector)
 # → http://localhost:8000/variante-1/
 # → http://localhost:8000/variante-2/
+# → http://localhost:8000/variante-3/
 ```
-
-> Nota: `variante-3` está excluida del push (tiene su propio `.git` anidado).
-> La tarjeta del selector está comentada para no mostrar un enlace roto.
-> Para incluirla en el futuro: borrar `variante-3/.git`, quitarla de `.gitignore`
-> y descomentar su tarjeta en el `index.html` raíz.
 
 ## Publicar en GitHub Pages
 
@@ -55,6 +51,7 @@ python3 -m http.server 8000
    - Selector: `https://TU_USUARIO.github.io/TU_REPO/`
    - Variante A: `https://TU_USUARIO.github.io/TU_REPO/variante-1/`
    - Variante B: `https://TU_USUARIO.github.io/TU_REPO/variante-2/`
+   - Variante C: `https://TU_USUARIO.github.io/TU_REPO/variante-3/`
 
 > Nota: los enlaces del selector son relativos y terminan en `/`, así funcionan igual
 > si el repo se sirve desde la raíz (`usuario.github.io`) o desde una subruta.

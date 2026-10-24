@@ -1,0 +1,6 @@
+# Robots für MTB Tec
+User-agent: *
+Allow: /
+
+# Nach dem Livegang auf die eigene Domain anpassen:
+# Sitemap: https://ihre-domain.de/sitemap.xml
