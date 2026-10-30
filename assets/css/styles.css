@@ -282,13 +282,13 @@ button { font: inherit; }
 .logo-img {
   display: block;
   width: auto;
-  height: 54px;
+  height: 62px;
 }
-.logo-img--footer { height: 66px; }
+.logo-img--footer { height: 74px; }
 
 @media (max-width: 720px) {
-  .logo-img { height: 44px; }
-  .logo-img--footer { height: 56px; }
+  .logo-img { height: 50px; }
+  .logo-img--footer { height: 62px; }
 }
 .logo-mark {
   display: grid;
