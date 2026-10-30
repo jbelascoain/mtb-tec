@@ -8,6 +8,27 @@ Geeignet für GitHub Pages, Netlify, Cloudflare Pages oder jeden klassischen Web
 
 ---
 
+## Kontaktformular (Form.taxi)
+
+Das Formular ist für [Form.taxi](https://form.taxi) vorbereitet, ist aber **noch nicht aktiv**:
+Im `action` steht der Platzhalter `FORM_CODE`. Solange dieser Platzhalter vorhanden ist,
+blockiert `assets/js/main.js` den Versand und zeigt einen Hinweis an.
+
+Zum Aktivieren:
+
+1. Konto auf [form.taxi](https://form.taxi/panel/account/register) anlegen und das Formular registrieren.
+2. Den angezeigten Endpoint (`https://form.taxi/s/XXXXXXXX`) in `index.html` als `action` einsetzen.
+3. Im Form.taxi-Panel prüfen:
+   - Honeypot-Feld: `_gotcha` (Standard, bereits im HTML vorhanden)
+   - E-Mail-Validierung aktiv (Feld heißt `email`)
+   - Erfolgsseite: entweder Panel-Einstellung oder das Feld `_next` (zeigt auf `danke.html`)
+4. AV-Vertrag (Art. 28 DSGVO) im Panel abschließen.
+
+Bereits vorbereitete Funktionsfelder im Formular: `_subject`, `_lang` (`de`) und `_next`.
+
+
+---
+
 ## 1. Struktur
 
 ```
@@ -16,6 +37,7 @@ mtb-tec/
 │                         # Referenzen, Stimmen, FAQ, Kontakt)
 ├── impressum.html        # Impressum (§ 5 DDG) – Pflicht in Deutschland
 ├── datenschutz.html      # Datenschutzerklärung (DSGVO)
+├── danke.html            # Erfolgsseite nach dem Formularversand
 ├── 404.html              # Fehlerseite (wird von GitHub Pages automatisch genutzt)
 ├── robots.txt            # Suchmaschinen
 ├── sitemap.xml           # Sitemap (Domain anpassen!)

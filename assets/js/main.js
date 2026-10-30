@@ -125,12 +125,12 @@
     var action = form.getAttribute('action') || '';
 
     form.addEventListener('submit', function (event) {
-      // Solange kein echter Formulardienst hinterlegt ist, nicht wirklich senden.
-      if (action.indexOf('IHRE_FORM_ID') !== -1) {
+      // Solange kein echter Form.taxi-Code hinterlegt ist, nicht wirklich senden.
+      if (action.indexOf('FORM_CODE') !== -1) {
         event.preventDefault();
         showStatus(
-          'Das Formular ist noch nicht mit einem Versanddienst verbunden. ' +
-          'Bitte schreiben Sie uns direkt an info@mtb-tec.de oder rufen Sie an: +49 123 456789.',
+          'Das Formular ist noch nicht mit Form.taxi verbunden. ' +
+          'Bitte schreiben Sie uns direkt an info@mtb-tec.de oder rufen Sie an: +49 152 3192 6546.',
           'info'
         );
         return;
