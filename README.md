@@ -1,6 +1,6 @@
 # MTB Tec – Website (One-Page)
 
-Statische Website für einen Elektrotechnik-Meisterbetrieb in Deutschland.
+Statische Website für einen Elektrotechnik-Fachbetrieb in Deutschland.
 Reines HTML, CSS und JavaScript – **kein Build, keine externen Abhängigkeiten** (keine Google Fonts,
 keine CDNs, keine Tracker). Damit ist die Seite DSGVO-freundlich und lädt sehr schnell.
 
@@ -86,11 +86,11 @@ Die Seite enthält bewusst Beispieltexte. Vor dem Livegang alles ersetzen:
 | Platzhalter | Vorkommen |
 |---|---|
 | `Max Mustermann` | index (Impressum-Link), impressum.html |
-| `Musterstraße 12` / `12345 Musterstadt` | index, impressum, datenschutz, JSON-LD |
-| `+49 123 456789` / `tel:+49123456789` | index (mehrfach), impressum, datenschutz |
+| `Elisabethstr. 8` / `47608 Geldern` | index, impressum, datenschutz, JSON-LD |
+| `+49 152 3192 6546` / `tel:+4915231926546` | index (mehrfach), impressum, datenschutz |
 | `info@mtb-tec.de` | index, impressum, datenschutz, Formular-Fallback |
 | `DE123456789` (USt-IdNr.) | impressum.html |
-| `Handwerkskammer Musterstadt` | impressum.html |
+| `Handwerkskammer Geldern` | impressum.html |
 | `https://jbelascoain.github.io/mtb-tec/` | index (`canonical`, `og:url`), sitemap.xml, robots.txt |
 | `IHRE_FORM_ID` | index.html (Formular-Action) |
 | Öffnungszeiten, Zahlen (15+ Jahre, 850+, 4,9/5) | index.html |
@@ -99,9 +99,9 @@ Die Seite enthält bewusst Beispieltexte. Vor dem Livegang alles ersetzen:
 Schnell ersetzen (Beispiel, vorher Backup/Commit anlegen):
 
 ```bash
-grep -rl "Musterstadt" . | xargs sed -i 's/Musterstadt/Echte Stadt/g'
-grep -rl "+49 123 456789" . | xargs sed -i 's/+49 123 456789/+49 170 1234567/g'
-grep -rl "tel:+49123456789" . | xargs sed -i 's/tel:+49123456789/tel:+491701234567/g'
+grep -rl "Geldern" . | xargs sed -i 's/Geldern/Echte Stadt/g'
+grep -rl "+49 152 3192 6546" . | xargs sed -i 's/+49 152 3192 6546/+49 170 1234567/g'
+grep -rl "tel:+4915231926546" . | xargs sed -i 's/tel:+4915231926546/tel:+491701234567/g'
 ```
 
 Danach mit `grep -rn "Muster\|IHRE_FORM_ID\|ihre-domain" .` prüfen, ob noch etwas übrig ist.
