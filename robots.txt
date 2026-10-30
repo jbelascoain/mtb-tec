@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Nach dem Livegang auf die eigene Domain anpassen:
-# Sitemap: https://ihre-domain.de/sitemap.xml
+# Sitemap: https://jbelascoain.github.io/mtb-tec/sitemap.xml

@@ -1,69 +1,166 @@
-# MTB-Tec – Página web para electricista alemán
+# MTB Tec – Website (One-Page)
 
-Sitio estático (HTML + CSS + JS, sin dependencias) preparado para GitHub Pages.
+Statische Website für einen Elektrotechnik-Meisterbetrieb in Deutschland.
+Reines HTML, CSS und JavaScript – **kein Build, keine externen Abhängigkeiten** (keine Google Fonts,
+keine CDNs, keine Tracker). Damit ist die Seite DSGVO-freundlich und lädt sehr schnell.
 
-## Estructura
+Geeignet für GitHub Pages, Netlify, Cloudflare Pages oder jeden klassischen Webspace.
+
+---
+
+## 1. Struktur
 
 ```
 mtb-tec/
-├── index.html                → Página selector: enlaces a cada variante de diseño
-├── variante-1/               → Variante A: profesional y limpia (azul marino + amarillo alemán)
-│   ├── index.html
-│   ├── styles.css
-│   └── script.js
-├── variante-2/               → Variante B: moderna y amigable (turquesa + amarillo, emojis, animaciones)
-│   ├── index.html
-│   ├── styles.css
-│   └── script.js
-├── variante-3/               → Variante C: completa y lista para producción (dark theme)
-│                              (Impressum, Datenschutz, 404, robots.txt, sitemap.xml, assets/)
-└── README.md
+├── index.html            # Startseite (One-Page: Hero, Leistungen, Vorteile, Ablauf,
+│                         # Referenzen, Stimmen, FAQ, Kontakt)
+├── impressum.html        # Impressum (§ 5 DDG) – Pflicht in Deutschland
+├── datenschutz.html      # Datenschutzerklärung (DSGVO)
+├── 404.html              # Fehlerseite (wird von GitHub Pages automatisch genutzt)
+├── robots.txt            # Suchmaschinen
+├── sitemap.xml           # Sitemap (Domain anpassen!)
+├── .nojekyll             # verhindert Jekyll-Verarbeitung auf GitHub Pages
+└── assets/
+    ├── css/styles.css    # komplettes Design, Design-Tokens in :root
+    ├── js/main.js        # Menü, Scroll-Effekte, Formularprüfung
+    └── img/
+        ├── logo.png          # Logo (texto azul, para fondos claros)
+        ├── logo-dark.png     # Logo (texto blanco, para fondos oscuros)
+        ├── logo-icon.png     # Solo el icono
+        ├── favicon.ico / favicon-32.png / favicon-192.png / apple-touch-icon.png
+        └── src/              # JPEG originales de referencia
 ```
 
-Cada variante es autónoma e independiente. El `index.html` de la raíz muestra una página de selección con un enlace a cada una (además tiene `noindex, nofollow` para que no se indexe como si fuera la web real). Para añadir una variante 3: crear su carpeta y descomentar su tarjeta en el `index.html` raíz.
+---
 
-## Cómo verlas en local
+## 2. Lokal ansehen
 
-Abre `index.html` directamente en el navegador, o sirve la carpeta:
+Im Projektordner:
 
 ```bash
 cd ~/mtb-tec
-python3 -m http.server 8000
-# → http://localhost:8000          (página selector)
-# → http://localhost:8000/variante-1/
-# → http://localhost:8000/variante-2/
-# → http://localhost:8000/variante-3/
+python3 -m http.server 8080
 ```
 
-## Publicar en GitHub Pages
+Dann <http://localhost:8080> öffnen. (Doppelklick auf `index.html` funktioniert auch, aber
+lokaler Server ist realistischer.)
 
-1. Crea un repositorio en GitHub (p. ej. `mtb-tec` o `usuario.github.io`).
-2. Sube **todo el contenido** del directorio (el selector + las variantes):
-   ```bash
-   git init
-   git remote add origin git@github.com:TU_USUARIO/TU_REPO.git
-   git add .
-   git commit -m "Sitio MTB-Tec con selector de variantes"
-   git push -u origin main
+---
+
+## 3. Auf GitHub Pages veröffentlichen
+
+### Variante A – Repository `mtb-tec` (URL: `usuario.github.io/mtb-tec/`)
+
+```bash
+cd ~/mtb-tec
+git init -b main
+git add .
+git commit -m "Website MTB Tec"
+git remote add origin https://github.com/jbelascoain/mtb-tec.git
+git push -u origin main
+```
+
+Dann im Repository: **Settings → Pages → Source: Deploy from a branch → Branch: `main`, Ordner: `/ (root)` → Save**.
+
+Nach 1–2 Minuten ist die Seite unter `https://jbelascoain.github.io/mtb-tec/` erreichbar.
+Alle Links im Projekt sind **relativ**, deshalb funktioniert auch dieser Unterordner ohne Änderungen.
+
+### Variante B – Repository `jbelascoain.github.io` (URL direkt `https://jbelascoain.github.io/`)
+
+Gleiche Schritte, Repository-Name muss exakt `jbelascoain.github.io` heißen.
+
+### Eigene Domain (optional)
+
+1. Datei `CNAME` im Projektordner anlegen mit einer Zeile: `www.mtb-tec.de`
+2. Beim Domain-Anbieter DNS setzen:
+   - `A`-Records für die Hauptdomain (`@`): `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+   - `CNAME` für `www` → `jbelascoain.github.io`
+3. In GitHub: **Settings → Pages → Custom domain** eintragen, danach **Enforce HTTPS** aktivieren.
+
+---
+
+## 4. Platzhalter ersetzen (wichtig!)
+
+Die Seite enthält bewusst Beispieltexte. Vor dem Livegang alles ersetzen:
+
+| Platzhalter | Vorkommen |
+|---|---|
+| `Max Mustermann` | index (Impressum-Link), impressum.html |
+| `Musterstraße 12` / `12345 Musterstadt` | index, impressum, datenschutz, JSON-LD |
+| `+49 123 456789` / `tel:+49123456789` | index (mehrfach), impressum, datenschutz |
+| `info@mtb-tec.de` | index, impressum, datenschutz, Formular-Fallback |
+| `DE123456789` (USt-IdNr.) | impressum.html |
+| `Handwerkskammer Musterstadt` | impressum.html |
+| `https://jbelascoain.github.io/mtb-tec/` | index (`canonical`, `og:url`), sitemap.xml, robots.txt |
+| `IHRE_FORM_ID` | index.html (Formular-Action) |
+| Öffnungszeiten, Zahlen (15+ Jahre, 850+, 4,9/5) | index.html |
+| Referenzen & Kundenstimmen | index.html |
+
+Schnell ersetzen (Beispiel, vorher Backup/Commit anlegen):
+
+```bash
+grep -rl "Musterstadt" . | xargs sed -i 's/Musterstadt/Echte Stadt/g'
+grep -rl "+49 123 456789" . | xargs sed -i 's/+49 123 456789/+49 170 1234567/g'
+grep -rl "tel:+49123456789" . | xargs sed -i 's/tel:+49123456789/tel:+491701234567/g'
+```
+
+Danach mit `grep -rn "Muster\|IHRE_FORM_ID\|ihre-domain" .` prüfen, ob noch etwas übrig ist.
+
+---
+
+## 5. Kontaktformular aktivieren
+
+GitHub Pages kann keine Formulare verarbeiten. Die Seite ist für **Formspree** vorbereitet:
+
+1. Kostenloses Konto auf <https://formspree.io> anlegen und ein Formular erstellen.
+2. In `index.html` die Action ersetzen:
+   ```html
+   <form class="form" id="contact-form" action="https://formspree.io/f/DEINE_ID" method="POST">
    ```
-3. En GitHub: **Settings → Pages → Source: Deploy from a branch → main / (root)**.
-4. Tras 1–2 minutos:
-   - Selector: `https://TU_USUARIO.github.io/TU_REPO/`
-   - Variante A: `https://TU_USUARIO.github.io/TU_REPO/variante-1/`
-   - Variante B: `https://TU_USUARIO.github.io/TU_REPO/variante-2/`
-   - Variante C: `https://TU_USUARIO.github.io/TU_REPO/variante-3/`
+3. Solange `IHRE_FORM_ID` stehen bleibt, zeigt das Formular einen freundlichen Hinweis mit
+   E-Mail und Telefonnummer an – es geht also nichts verloren.
+4. Datenschutzerklärung, Abschnitt 4, um den Anbieter ergänzen (Name, Anschrift, Übermittlungsgrundlage).
 
-> Nota: los enlaces del selector son relativos y terminan en `/`, así funcionan igual
-> si el repo se sirve desde la raíz (`usuario.github.io`) o desde una subruta.
+Alternativen: Netlify Forms, Web3Forms, eigener PHP-Endpunkt.
 
-Cuando elija la variante definitiva: copia su contenido a la raíz del repo
-(sustituyendo el selector) o simplemente elimina las variantes no elegidas.
+---
 
-## Pendientes antes de publicar
+## 6. Anpassen
 
-- [ ] Reemplazar los datos de ejemplo: teléfono `+49 170 123 45 67`, email `info@mtb-tec.example`, dirección `Musterstraße 12, 12345 Musterstadt` y nombre `Max Mustermann` (aparecen en index.html, buscar/reemplazar).
-- [ ] Insertar el logo propio (buscar los comentarios `<!-- Logo: hier später … -->` en el `<header>`).
-- [ ] Añadir foto real en la sección "Über mich" (buscar `photo-placeholder`).
-- [ ] Conectar el formulario de contacto a un servicio como [Formspree](https://formspree.io) (GitHub Pages solo sirve archivos estáticos).
-- [ ] Crear `impressum.html` y `datenschutz.html` (legalmente obligatorios en Alemania: Impresum §5 TMG/TDDDG y política de privacidad).
-- [ ] Revisar textos con el cliente (el tono de la variante 2 usa "dein/du", la variante 1 usa "Sie" — más formal).
+- **Farben / Abstände:** `assets/css/styles.css`, Block `:root` (Dunkelblau `--ink`, Gelb `--accent`).
+- **Texte:** direkt in `index.html`, Abschnitte sind kommentiert (`<!-- Leistungen -->` usw.).
+- **Bilder:** Aktuell gibt es keine Fotos – die Referenzkarten nutzen Farbverläufe + Icons, damit
+  die Seite ohne Lizenzbilder professionell aussieht. Eigene Fotos können z. B. so eingebaut werden:
+  ```html
+  <div class="ref-thumb">
+    <img src="assets/img/projekt-1.jpg" alt="Neue Unterverteilung nach der Sanierung" loading="lazy">
+  </div>
+  ```
+  Dazu in `styles.css` ergänzen: `.ref-thumb img { width:100%; height:100%; object-fit:cover; }`
+  und `.ref-thumb::after { display:none; }`.
+- **Impressum/Datenschutz:** Mustertexte – bitte rechtlich prüfen lassen (Pflicht in Deutschland).
+
+---
+
+## 7. Technische Hinweise
+
+- **Barrierefreiheit:** Skip-Link, sichtbare Fokus-Stile, `aria`-Attribute am Menü, nativer
+  FAQ-Akkordeon (`<details>`), `prefers-reduced-motion` wird respektiert.
+- **SEO:** Meta-Description, Open Graph, JSON-LD (`Electrician`), semantische Struktur,
+  `sitemap.xml` + `robots.txt`.
+- **Performance:** keine externen Requests, keine Bilder, SVG-Icons als Sprite → sehr kleiner
+  Payload, gute Core-Web-Vitals-Werte.
+- **DSGVO:** Systemschriften statt Google Fonts, kein Tracking, kein Cookie-Banner nötig.
+
+---
+
+## 8. Deployment-Checkliste
+
+- [ ] Alle Platzhalter ersetzt (`grep -rn "Muster\|IHRE_FORM_ID\|ihre-domain" .`)
+- [ ] Echte Telefonnummer in allen `tel:`-Links
+- [ ] Impressum vollständig und geprüft
+- [ ] Datenschutz an tatsächliches Hosting/Formular angepasst
+- [ ] Domain in `sitemap.xml`, `robots.txt`, `canonical` und `og:url` eingetragen
+- [ ] Formular getestet (Testmail kommt an)
+- [ ] Auf Handy getestet (Menü und feste Kontaktleiste unten)
+- [ ] GitHub Pages aktiviert und HTTPS erzwungen

@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Domain vor dem Livegang ersetzen: https://ihre-domain.de/ -->
+<!-- Domain vor dem Livegang ersetzen: https://jbelascoain.github.io/mtb-tec/ -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ihre-domain.de/</loc>
+    <loc>https://jbelascoain.github.io/mtb-tec/</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://ihre-domain.de/impressum.html</loc>
+    <loc>https://jbelascoain.github.io/mtb-tec/impressum.html</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://ihre-domain.de/datenschutz.html</loc>
+    <loc>https://jbelascoain.github.io/mtb-tec/datenschutz.html</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
