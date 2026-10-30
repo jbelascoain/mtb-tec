@@ -23,7 +23,12 @@ mtb-tec/
 └── assets/
     ├── css/styles.css    # komplettes Design, Design-Tokens in :root
     ├── js/main.js        # Menü, Scroll-Effekte, Formularprüfung
-    └── img/favicon.svg   # Favicon (Blitz auf Dunkelblau)
+    └── img/
+        ├── logo.png          # Logo (texto azul, para fondos claros)
+        ├── logo-dark.png     # Logo (texto blanco, para fondos oscuros)
+        ├── logo-icon.png     # Solo el icono
+        ├── favicon.ico / favicon-32.png / favicon-192.png / apple-touch-icon.png
+        └── src/              # JPEG originales de referencia
 ```
 
 ---
