@@ -817,6 +817,10 @@ button { font: inherit; }
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
 }
+.quote-grid > .quote:only-child {
+  grid-column: 2;
+  text-align: center;
+}
 .quote {
   display: flex;
   flex-direction: column;
@@ -852,8 +856,24 @@ button { font: inherit; }
   flex-direction: column;
   gap: 2px;
 }
+.quote-grid > .quote:only-child .stars {
+  justify-content: center;
+}
+.quote-grid > .quote:only-child figcaption {
+  align-items: center;
+}
 .quote figcaption strong { font-size: 0.92rem; color: var(--ink); }
 .quote figcaption span { font-size: 0.8rem; color: var(--muted); }
+.quote figcaption a {
+  width: fit-content;
+  margin-top: 10px;
+  font-size: 0.86rem;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
 
 /* ---------- FAQ ---------- */
 .faq {
@@ -1231,6 +1251,8 @@ button { font: inherit; }
 
 @media (max-width: 720px) {
   :root { --header-h: 66px; }
+  html { scroll-padding-bottom: 96px; }
+  #form-status { scroll-margin-bottom: 96px; }
   .container { padding-inline: 18px; }
   .pill { font-size: 0.7rem; letter-spacing: 0.1em; padding: 7px 12px; }
   .topbar { font-size: 0.76rem; }
@@ -1253,6 +1275,11 @@ button { font: inherit; }
   .feature-grid,
   .ref-grid,
   .quote-grid { grid-template-columns: 1fr; }
+  .quote-grid > .quote:only-child {
+    grid-column: auto;
+    justify-self: center;
+    width: min(100%, 420px);
+  }
   .steps { grid-template-columns: 1fr; }
   .ref-card:last-child { grid-column: auto; }
   .ref-card:last-child .ref-thumb { aspect-ratio: 16 / 10; }

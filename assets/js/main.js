@@ -119,6 +119,7 @@
     if (!status) return;
     status.textContent = message;
     status.className = 'form-status is-visible ' + (type === 'error' ? 'is-error' : 'is-info');
+    status.scrollIntoView({ block: 'nearest' });
   }
 
   if (form) {

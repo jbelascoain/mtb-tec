@@ -10,21 +10,29 @@ Geeignet für GitHub Pages, Netlify, Cloudflare Pages oder jeden klassischen Web
 
 ## Kontaktformular (Form.taxi)
 
-Das Formular ist für [Form.taxi](https://form.taxi) vorbereitet, ist aber **noch nicht aktiv**:
+Das Formular ist für [Form.taxi](https://form.taxi) vorbereitet, ist aber **noch nicht aktiv**.
 Im `action` steht der Platzhalter `FORM_CODE`. Solange dieser Platzhalter vorhanden ist,
-blockiert `assets/js/main.js` den Versand und zeigt einen Hinweis an.
+blockiert `assets/js/main.js` den Versand und zeigt einen Hinweis an. Sobald `FORM_CODE`
+nicht mehr in der `action` steht, sendet der Browser das Formular nativ per POST;
+Form.taxi leitet auf `_next` weiter. Dafür muss das JavaScript nicht geändert werden.
 
-Zum Aktivieren:
+Zum Aktivieren nur diese zwei Stellen in `index.html` ersetzen:
 
-1. Konto auf [form.taxi](https://form.taxi/panel/account/register) anlegen und das Formular registrieren.
-2. Den angezeigten Endpoint (`https://form.taxi/s/XXXXXXXX`) in `index.html` als `action` einsetzen.
-3. Im Form.taxi-Panel prüfen:
-   - Honeypot-Feld: `_gotcha` (Standard, bereits im HTML vorhanden)
+1. `FORM_CODE` in `action` durch den Code aus dem Panel (`https://form.taxi/s/…`).
+2. Den Wert von `_next` durch die absolute URL von `danke.html` auf der Live-Domain
+   (aktuell `https://jbelascoain.github.io/mtb-tec/danke.html`).
+
+Vorher im [Form.taxi-Panel](https://form.taxi/panel/account/register):
+
+1. Konto anlegen und das Formular registrieren.
+2. Prüfen:
+   - Honeypot-Feld: `_gotcha` (bereits im HTML)
    - E-Mail-Validierung aktiv (Feld heißt `email`)
-   - Erfolgsseite: entweder Panel-Einstellung oder das Feld `_next` (zeigt auf `danke.html`)
-4. AV-Vertrag (Art. 28 DSGVO) im Panel abschließen.
+   - Erfolgsseite: Panel-Einstellung oder das Feld `_next`
+3. AV-Vertrag (Art. 28 DSGVO) im Panel abschließen.
 
-Bereits vorbereitete Funktionsfelder im Formular: `_subject`, `_lang` (`de`) und `_next`.
+Feldnamen, die das Panel erwartet: `name`, `phone`, `email`, `topic`, `message`,
+`privacy`, plus die Funktionsfelder `_gotcha`, `_subject` und `_lang` (`de`).
 
 
 ---
@@ -113,10 +121,10 @@ Die Seite enthält bewusst Beispieltexte. Vor dem Livegang alles ersetzen:
 | `info@mtb-tec.de` | index, impressum, datenschutz, Formular-Fallback |
 | `DE123456789` (USt-IdNr.) | impressum.html |
 | `Handwerkskammer Geldern` | impressum.html |
-| `https://jbelascoain.github.io/mtb-tec/` | index (`canonical`, `og:url`), sitemap.xml, robots.txt |
-| `IHRE_FORM_ID` | index.html (Formular-Action) |
+| `https://jbelascoain.github.io/mtb-tec/` | index (`canonical`, `og:url`, Formular `_next`), sitemap.xml, robots.txt |
+| `FORM_CODE` | index.html (Formular-`action`) |
 | Öffnungszeiten, Zahlen (15+ Jahre, 850+, 4,9/5) | index.html |
-| Referenzen & Kundenstimmen | index.html |
+| Referenzen | index.html |
 
 Schnell ersetzen (Beispiel, vorher Backup/Commit anlegen):
 
@@ -126,31 +134,15 @@ grep -rl "+49 152 3192 6546" . | xargs sed -i 's/+49 152 3192 6546/+49 170 12345
 grep -rl "tel:+4915231926546" . | xargs sed -i 's/tel:+4915231926546/tel:+491701234567/g'
 ```
 
-Danach mit `grep -rn "Muster\|IHRE_FORM_ID\|ihre-domain" .` prüfen, ob noch etwas übrig ist.
+Danach mit `grep -rn "Muster\|FORM_CODE\|ihre-domain" .` prüfen, ob noch etwas übrig ist.
 
 ---
 
-## 5. Kontaktformular aktivieren
-
-GitHub Pages kann keine Formulare verarbeiten. Die Seite ist für **Formspree** vorbereitet:
-
-1. Kostenloses Konto auf <https://formspree.io> anlegen und ein Formular erstellen.
-2. In `index.html` die Action ersetzen:
-   ```html
-   <form class="form" id="contact-form" action="https://formspree.io/f/DEINE_ID" method="POST">
-   ```
-3. Solange `IHRE_FORM_ID` stehen bleibt, zeigt das Formular einen freundlichen Hinweis mit
-   E-Mail und Telefonnummer an – es geht also nichts verloren.
-4. Datenschutzerklärung, Abschnitt 4, um den Anbieter ergänzen (Name, Anschrift, Übermittlungsgrundlage).
-
-Alternativen: Netlify Forms, Web3Forms, eigener PHP-Endpunkt.
-
----
-
-## 6. Anpassen
+## 5. Anpassen
 
 - **Farben / Abstände:** `assets/css/styles.css`, Block `:root` (Dunkelblau `--ink`, Gelb `--accent`).
 - **Texte:** direkt in `index.html`, Abschnitte sind kommentiert (`<!-- Leistungen -->` usw.).
+- **Kundenstimmen:** in `index.html`, Abschnitt `#stimmen`. Name, Sterne, Text und den Link «Auf Google ansehen» dort von Hand pflegen. Keine Google-API.
 - **Bilder:** Aktuell gibt es keine Fotos – die Referenzkarten nutzen Farbverläufe + Icons, damit
   die Seite ohne Lizenzbilder professionell aussieht. Eigene Fotos können z. B. so eingebaut werden:
   ```html
@@ -164,21 +156,22 @@ Alternativen: Netlify Forms, Web3Forms, eigener PHP-Endpunkt.
 
 ---
 
-## 7. Technische Hinweise
+## 6. Technische Hinweise
 
 - **Barrierefreiheit:** Skip-Link, sichtbare Fokus-Stile, `aria`-Attribute am Menü, nativer
   FAQ-Akkordeon (`<details>`), `prefers-reduced-motion` wird respektiert.
 - **SEO:** Meta-Description, Open Graph, JSON-LD (`Electrician`), semantische Struktur,
   `sitemap.xml` + `robots.txt`.
-- **Performance:** keine externen Requests, keine Bilder, SVG-Icons als Sprite → sehr kleiner
-  Payload, gute Core-Web-Vitals-Werte.
+- **Performance:** keine externen Requests und keine Baustellenfotos. Logos und Open-Graph-Bild
+  liegen lokal unter `assets/img/`, Icons als SVG-Sprite.
 - **DSGVO:** Systemschriften statt Google Fonts, kein Tracking, kein Cookie-Banner nötig.
 
 ---
 
-## 8. Deployment-Checkliste
+## 7. Deployment-Checkliste
 
-- [ ] Alle Platzhalter ersetzt (`grep -rn "Muster\|IHRE_FORM_ID\|ihre-domain" .`)
+- [ ] Alle Platzhalter ersetzt (`grep -rn "Muster\|FORM_CODE\|ihre-domain" .`)
+- [ ] `FORM_CODE` in der Formular-`action` und die absolute `_next`-URL ersetzt (siehe Kontaktformular)
 - [ ] Echte Telefonnummer in allen `tel:`-Links
 - [ ] Impressum vollständig und geprüft
 - [ ] Datenschutz an tatsächliches Hosting/Formular angepasst

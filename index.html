@@ -232,25 +232,25 @@
         </div>
 
         <div class="service-grid">
-          <article class="service reveal">
+          <article class="service reveal" id="elektroinstallation">
             <span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="#i-plug"></use></svg></span>
             <h3>Elektroinstallation</h3>
             <p>Neubau, Sanierung und Erweiterung: Leitungen, Verteiler und Steckdosen nach DIN&nbsp;VDE&nbsp;0100.</p>
           </article>
 
-          <article class="service reveal" style="--d:.05s">
+          <article class="service reveal" id="smart-home" style="--d:.05s">
             <span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="#i-home"></use></svg></span>
             <h3>Smart Home &amp; KNX</h3>
             <p>Vernetzte Beleuchtung, Beschattung und Heizung – steuerbar per App, Schalter oder Sprachbefehl.</p>
           </article>
 
-          <article class="service reveal" style="--d:.1s">
+          <article class="service reveal" id="photovoltaik" style="--d:.1s">
             <span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="#i-sun"></use></svg></span>
             <h3>Photovoltaik &amp; Speicher</h3>
             <p>Planung und Montage von PV-Anlagen mit Batteriespeicher – für mehr Unabhängigkeit und niedrigere Kosten.</p>
           </article>
 
-          <article class="service reveal" style="--d:.15s">
+          <article class="service reveal" id="wallbox" style="--d:.15s">
             <span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="#i-car"></use></svg></span>
             <h3>Wallbox &amp; E-Mobilität</h3>
             <p>Ladeinfrastruktur für Ihr E-Auto: von der 11-kW-Wallbox bis zur intelligenten Laststeuerung.</p>
@@ -262,7 +262,7 @@
             <p>Wohnraum-, Außen- und Objektbeleuchtung mit moderner LED-Technik und bedarfsgerechter Planung.</p>
           </article>
 
-          <article class="service reveal" style="--d:.05s">
+          <article class="service reveal" id="notdienst" style="--d:.05s">
             <span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="#i-tool"></use></svg></span>
             <h3>Störungssuche &amp; Notdienst</h3>
             <p>Kein Strom, defekter FI-Schalter oder Kurzschluss? Wir sind schnell vor Ort und finden die Ursache.</p>
@@ -443,26 +443,12 @@
             <div class="stars" aria-hidden="true">
               <svg class="icon"><use href="#i-star"></use></svg><svg class="icon"><use href="#i-star"></use></svg><svg class="icon"><use href="#i-star"></use></svg><svg class="icon"><use href="#i-star"></use></svg><svg class="icon"><use href="#i-star"></use></svg>
             </div>
-            <blockquote><p>„Schnelle Terminvergabe, saubere Arbeit und ein fairer Preis. Die Baustelle war jeden Abend aufgeräumt.“</p></blockquote>
-            <figcaption><strong>Familie Berger</strong><span>Geldern · Altbausanierung</span></figcaption>
-            <span class="sr-only">Bewertung: 5 von 5 Sternen</span>
-          </figure>
-
-          <figure class="quote reveal" style="--d:.08s">
-            <div class="stars" aria-hidden="true">
-              <svg class="icon"><use href="#i-star"></use></svg><svg class="icon"><use href="#i-star"></use></svg><svg class="icon"><use href="#i-star"></use></svg><svg class="icon"><use href="#i-star"></use></svg><svg class="icon"><use href="#i-star"></use></svg>
-            </div>
-            <blockquote><p>„Die PV-Anlage wurde top geplant und erklärt. Auch die Anmeldung beim Netzbetreiber lief ohne Aufwand für uns.“</p></blockquote>
-            <figcaption><strong>M. Kowalski</strong><span>Musterdorf · Photovoltaik</span></figcaption>
-            <span class="sr-only">Bewertung: 5 von 5 Sternen</span>
-          </figure>
-
-          <figure class="quote reveal" style="--d:.16s">
-            <div class="stars" aria-hidden="true">
-              <svg class="icon"><use href="#i-star"></use></svg><svg class="icon"><use href="#i-star"></use></svg><svg class="icon"><use href="#i-star"></use></svg><svg class="icon"><use href="#i-star"></use></svg><svg class="icon"><use href="#i-star"></use></svg>
-            </div>
-            <blockquote><p>„Am Sonntagabend ein Notfall, nach einer Stunde war der Fehler gefunden. So wünscht man sich einen Handwerker.“</p></blockquote>
-            <figcaption><strong>S. Neumann</strong><span>Geldern · Notdienst</span></figcaption>
+            <blockquote><p>„Wir fanden für die Installation unseres Balkonkraftwerkes einen Guten Elektriker, der gute und saubere Arbeit gemacht hat und uns mit Fragen und Dokumentationen unterstützt hat. Ich kann die Firma MTB Tec mit gutem Gewissen weiterempfehlen.“</p></blockquote>
+            <figcaption>
+              <strong>Thorsten Wiechert</strong>
+              <span>Google · Balkonkraftwerk</span>
+              <a href="https://www.google.com/maps/place/MTB+Tec/@51.5165147,6.3483196,17z/data=!4m8!3m7!1s0x47c761e7f26dd47f:0xd6ac827ecd847b69!8m2!3d51.5165147!4d6.3483196!9m1!1b1!16s%2Fg%2F11zxp1mqz9?hl=de" target="_blank" rel="noopener">Auf Google ansehen</a>
+            </figcaption>
             <span class="sr-only">Bewertung: 5 von 5 Sternen</span>
           </figure>
         </div>
@@ -562,7 +548,12 @@
           <p class="form-hint">Felder mit * sind Pflichtfelder.</p>
 
           <form class="form" id="contact-form" action="https://form.taxi/s/FORM_CODE" method="POST">
-            <!-- Form.taxi: función de campos. FORM_CODE sustituir por el código real del panel -->
+            <!--
+              Form.taxi später aktivieren – nur diese zwei Stellen ersetzen, JavaScript nicht anfassen:
+              1. FORM_CODE in action durch den Code aus dem Panel ersetzen (https://form.taxi/s/…)
+              2. _next auf die absolute URL von danke.html der Live-Domain setzen
+              Felder: name, phone, email, topic, message, privacy, _gotcha, _subject, _lang
+            -->
             <input type="hidden" name="_subject" value="Neue Anfrage über mtb-tec.de">
             <input type="hidden" name="_lang" value="de">
             <input type="hidden" name="_next" value="https://jbelascoain.github.io/mtb-tec/danke.html">
@@ -645,11 +636,11 @@
       <nav class="footer-col" aria-label="Leistungen">
         <h4>Leistungen</h4>
         <ul>
-          <li><a href="#leistungen">Elektroinstallation</a></li>
-          <li><a href="#leistungen">Smart Home &amp; KNX</a></li>
-          <li><a href="#leistungen">Photovoltaik</a></li>
-          <li><a href="#leistungen">Wallbox</a></li>
-          <li><a href="#leistungen">Notdienst</a></li>
+          <li><a href="#elektroinstallation">Elektroinstallation</a></li>
+          <li><a href="#smart-home">Smart Home &amp; KNX</a></li>
+          <li><a href="#photovoltaik">Photovoltaik</a></li>
+          <li><a href="#wallbox">Wallbox</a></li>
+          <li><a href="#notdienst">Notdienst</a></li>
         </ul>
       </nav>
 
