@@ -967,6 +967,43 @@ button { font: inherit; }
 }
 .contact-list a:hover { color: var(--accent-strong); }
 
+.contact-phone {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 2px;
+}
+.contact-phone > a {
+  display: inline-flex;
+  margin-top: 0;
+}
+.contact-list a.btn-wa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  margin-top: 0;
+  padding: 0;
+  line-height: 0;
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff;
+}
+.contact-list a.btn-wa .icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  stroke: none;
+}
+.btn-wa:hover {
+  background: #1ebe5a;
+  color: #fff;
+}
+.btn-wa--float { display: none; }
+
 .notdienst-box {
   display: flex;
   gap: 14px;
@@ -1306,6 +1343,31 @@ button { font: inherit; }
     backdrop-filter: blur(10px);
   }
   .mobile-cta .btn { padding: 13px 12px; }
+
+  .btn-wa--float {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    right: 16px;
+    bottom: calc(86px + env(safe-area-inset-bottom));
+    z-index: 96;
+    width: 56px;
+    height: 56px;
+    padding: 0;
+    border-radius: 50%;
+    background: #25d366;
+    color: #fff;
+    line-height: 0;
+    box-shadow: 0 10px 24px rgba(7, 48, 24, 0.28);
+  }
+  .btn-wa--float .icon {
+    display: block;
+    width: 32px;
+    height: 32px;
+    fill: currentColor;
+    stroke: none;
+  }
 }
 
 @media (max-width: 420px) {
@@ -1405,7 +1467,7 @@ button { font: inherit; }
 
 /* ---------- Druck ---------- */
 @media print {
-  .topbar, .site-header, .mobile-cta, .hero::before, .site-footer { display: none; }
+  .topbar, .site-header, .mobile-cta, .btn-wa--float, .hero::before, .site-footer { display: none; }
   body { color: #000; }
   .hero { background: #fff; color: #000; padding-block: 0 20px; }
   .hero h1, .hero h1 .hl, .card-emergency h2,
